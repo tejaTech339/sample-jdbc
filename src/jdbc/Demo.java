@@ -2,6 +2,7 @@ package jdbc;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -35,19 +36,31 @@ public class Demo {
 		/*
 		 *  Note:
 		 *       for values we have use dynamic input which is Scanner.
-		 */
+		 
 		String sqlQuery="insert into "+tableName+" values(4,'sree','sree@gmail.com')";
+		st.execute(sqlQuery); */
+		
+		//3.Select Query:Retrieving data from table:
+	/*	String sqlQuery="select * from "+tableName;
 		st.execute(sqlQuery);
+		ResultSet rs=st.getResultSet();
+		System.out.println("SID\tSNAME\tSEMAIL");
+		System.out.println("=================================");
+		while(rs.next()) {
+			System.out.println(rs.getInt(1)+"\t"+rs.getString(2)+"\t"+rs.getString(3));
+		} */
 		
-		//3. Update Query
+		//delete-Query: <delete from tableName :condition:>
 		
+	/*	String sqlQuery="delete from student "
+				      + "where sid=4";
+		int executeUpdate = st.executeUpdate(sqlQuery);
+		System.out.println(executeUpdate); */
 		
-		
-		
-		System.out.println("success");
-		
-		
-		
+		String sqlQuery="update student "
+	                  + "set sname=tj semail=tj@gmail.com where sid=1";
+        int executeUpdate = st.executeUpdate(sqlQuery);
+        System.out.println(executeUpdate); 
 		
 		st.close();
 		con.close();
